@@ -3,11 +3,10 @@ FROM ubuntu:22.04
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV PATH="/root/miniconda3/bin:${PATH}"
 RUN apt-get update && apt-get install -y apt-utils wget curl locales && rm -rf /var/lib/apt/lists/*
-RUN apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
- && locale-gen "en_US.UTF-8"
-ENV LANG=en_US.UTF-8 \
-    LANGUAGE=en_US:en \
-    LC_ALL=en_US.UTF-8
+RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+    dpkg-reconfigure --frontend=noninteractive locales && \
+    update-locale LANG=en_US.UTF-8
+
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
     && mkdir /root/.conda \
