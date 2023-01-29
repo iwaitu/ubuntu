@@ -12,4 +12,4 @@ RUN conda --version
 RUN pip install nvidia-pyindex
 
 RUN addgroup agsuser
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g agsuser -G sudo agsuser
+RUN useradd -rm -d /home/agsuser -s /bin/bash agsuser agsuser -p "$(openssl passwd -1 agsuser888)"
