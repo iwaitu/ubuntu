@@ -1,5 +1,6 @@
 FROM ubuntu:22.04
 
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV PATH="/root/miniconda3/bin:${PATH}"
 RUN apt-get update && apt-get install -y apt-utils wget && rm -rf /var/lib/apt/lists/*
 
@@ -13,3 +14,4 @@ RUN pip install nvidia-pyindex
 
 RUN addgroup agsuser
 RUN useradd -rm -d /home/agsuser -s /bin/bash -g agsuser -G sudo agsuser
+RUN echo 'agsuser:agsuser' | chpasswd
