@@ -12,4 +12,4 @@ RUN conda --version
 RUN pip install nvidia-pyindex
 
 RUN addgroup agsuser
-RUN adduser -DH -G agsuser agsuser
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g agsuser -G sudo agsuser
