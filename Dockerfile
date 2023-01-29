@@ -1,9 +1,7 @@
 FROM ubuntu:22.04
 
-RUN apt-get update && apt-get install -y \
-    apt-utils wget
-RUN apt-get update
-RUN apt-get install -y wget && rm -rf /var/lib/apt/lists/*
+
+RUN apt-get update && apt-get install -y apt-utils wget && rm -rf /var/lib/apt/lists/*
 
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
