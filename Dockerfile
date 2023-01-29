@@ -16,3 +16,4 @@ RUN pip install nvidia-pyindex
 RUN addgroup agsuser
 RUN useradd -rm -d /home/agsuser -s /bin/bash -g agsuser -G root agsuser
 RUN echo 'agsuser:agsuser888' | chpasswd
+RUN chown -R agsuser:agsuser /root
