@@ -11,5 +11,5 @@ RUN wget \
 RUN conda --version
 RUN pip install nvidia-pyindex
 
-RUN addgroup -S agsuser
+RUN addgroup agsuser
 RUN useradd -rm -d /home/agsuser -s /bin/bash -g root agsuser agsuser
