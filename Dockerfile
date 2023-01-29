@@ -3,7 +3,7 @@ FROM ubuntu:22.04
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV PATH="/root/miniconda3/bin:${PATH}"
 RUN apt-get update && apt-get install -y apt-utils wget curl locales vim && rm -rf /var/lib/apt/lists/*
-RUN sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && \
+RUN locale-gen "en_US.UTF-8" && \
     dpkg-reconfigure --frontend=noninteractive locales && \
     update-locale LANG=en_US.UTF-8
 
